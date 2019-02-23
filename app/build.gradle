@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.cryptoapp.nfcapp"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha01'
+    implementation group: 'com.google.guava', name: 'guava', version: '23.0-android'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
+    implementation 'com.github.clans:fab:1.6.4'
+    implementation 'com.github.paolorotolo:appintro:v5.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-alpha1'
+    implementation('org.bitcoinj:bitcoinj-core:0.14.7') {
+        exclude module: 'scrypt'
+        exclude module: 'guava'
+    }
+    implementation 'com.afollestad.material-dialogs:core:2.0.0'
+    implementation("com.mikepenz:materialdrawer:5.9.1@aar") {
+        transitive = true
+    }
+    implementation 'com.google.android.material:material:1.0.0-alpha1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+}
